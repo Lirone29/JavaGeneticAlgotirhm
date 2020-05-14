@@ -31,7 +31,7 @@ public class Genetic {
         generationSize = 5000;
         //the size of new population, probabily the best option is procentage of generationSize
         reproductionSize = 200;
-        maxNumberOfIterations = 1000;
+        maxNumberOfIterations = 8000;
         mutationRate = 0.1f;
         //for tournament selection
         tournamentSize = 40;
@@ -148,6 +148,10 @@ public class Genetic {
     public Genome optimize(){
         List<Genome> population = initialPopulation();
         Genome globalBestGenome = population.get(0);
+        long startTime = System.nanoTime();
+        long endTime;
+        long timeElapsed;
+        int minutes = 1;
         //so add timer here!!!
         for(int i=0; i<maxNumberOfIterations; i++){
             List<Genome> selected = selection(population);
@@ -155,6 +159,12 @@ public class Genetic {
             globalBestGenome = Collections.min(population);
             if(globalBestGenome.getFitness() < targetFitness)
                 break;
+            endTime = System.nanoTime();
+            timeElapsed = endTime-startTime;
+            if((timeElapsed/1000000000)> minutes*60){
+                System.out.println("Time break");
+                break;
+            }
         }
         return globalBestGenome;
     }
