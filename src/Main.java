@@ -1,33 +1,47 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.Vector;
+
 public class Main {
 
-    static int choice = -1;
-    int populationSize = 20;
+    static int startingCity = 0;
+    static int numberOfCities;
+    static int minutes;
+    static int[][] travelCost;
+    static String filename = "ftv33.atsp";
+    static Matrix costMatrix;
+    static SelectionType selectionType = SelectionType.TOURNAMENT;
 
     public static void main(String[] args) {
 
-        Matrix costMatrix = new Matrix();
-        costMatrix.readFromFile("tsp10.atsp");
+        minutes = 5;
+        costMatrix = new Matrix();
+        costMatrix.readFromFile(filename);
         costMatrix.display();
 
-        int numberOfCities = costMatrix.getSize();
-        int[][] travelPrices = new int[numberOfCities][numberOfCities];
+        numberOfCities = costMatrix.getSize();
+        System.out.println(numberOfCities);
+        travelCost = new int[numberOfCities][numberOfCities];
 
         for (int i = 0; i < numberOfCities; i++) {
             for (int j = 0; j < numberOfCities; j++) {
-                travelPrices[i][j] = (int) costMatrix.getValue(i,j);
+                travelCost[i][j] = (int) costMatrix.getValue(i, j);
             }
         }
-        //printTravelPrices(travelPrices,numberOfCities);
-        Genetic genetic = new Genetic(numberOfCities, SelectionType.ROULETTE, travelPrices, 0, 0);
-        Genome result = genetic.optimize();
+
+        printTravelCosts();
+        Genetic genetic = new Genetic(numberOfCities, selectionType, travelCost, startingCity, 0);
+        Genome result = genetic.optimize(minutes);
         System.out.println(result);
     }
 
-    public static void printTravelPrices(int[][] travelPrices, int numberOfCities){
-        for(int i = 0; i<numberOfCities; i++){
-            for(int j=0; j<numberOfCities; j++){
-                System.out.print(travelPrices[i][j]);
-                if(travelPrices[i][j]/10 == 0)
+    public static void printTravelCosts() {
+        for (int i = 0; i < numberOfCities; i++) {
+            for (int j = 0; j < numberOfCities; j++) {
+                System.out.print(travelCost[i][j]);
+                if (travelCost[i][j] / 10 == 0)
                     System.out.print("  ");
                 else
                     System.out.print(' ');
@@ -35,5 +49,6 @@ public class Main {
             System.out.println("");
         }
     }
+
 
 }
