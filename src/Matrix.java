@@ -42,7 +42,7 @@ public class Matrix {
                     dim = data.split(" ", 2);
                     dimension = Integer.valueOf(dim[1]);
                     this.setSize(dimension);
-                    System.out.println("Dimension is " + dimension);
+//                    System.out.println("Dimension is " + dimension);
                 }
                 if (data.contains("EDGE_WEIGHT_SECTION")) break;
             }

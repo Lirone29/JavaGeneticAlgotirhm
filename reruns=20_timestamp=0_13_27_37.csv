@@ -1,8 +1,0 @@
-file, number of cities, selection type, runs, average time, best time, optimal solution
-tsp10.atsp, 10, TOURNAMENT, 20, 1100, 1060, 1286
-ftv33.atsp, 34, TOURNAMENT, 20, 1575, 1555, 1286
-ftv64.atsp, 65, TOURNAMENT, 20, 2775, 2670, 1839
-ft70.atsp, 70, TOURNAMENT, 20, 2931, 2775, 38673
-ftv70.atsp, 71, TOURNAMENT, 20, 2853, 2815, 1950
-ftv170.atsp, 171, TOURNAMENT, 20, 10244, 9845, 2755
-kro124p.atsp, 100, TOURNAMENT, 20, 4513, 4325, 36230

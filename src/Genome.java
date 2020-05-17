@@ -72,7 +72,7 @@ public class Genome implements Comparable {
         }
         sb.append(" ");
         sb.append(startingCity);
-        sb.append("\n Distance: ");
+        sb.append("\nDistance: ");
         sb.append(this.fitness);
         return sb.toString();
 

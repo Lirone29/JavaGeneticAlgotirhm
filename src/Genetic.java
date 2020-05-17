@@ -156,7 +156,7 @@ public class Genetic {
             endTime = System.nanoTime();
             timeElapsed = endTime - startTime;
             if ((timeElapsed / 1000000000) > minutes * 60) {
-                System.out.println("Time break");
+//                System.out.println("Time break");
                 break;
             }
         }
